@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Assignments</title>
+  <style>
+    /* Your CSS styles here */
+    /* Reset default margin and padding for all elements */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Apply a background color and some padding to the header */
+    header {
+      background-color: #039be5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Style the main content area */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Style the table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0277bd;
+    }
+
+    /* Style for table rows and cells */
+    tbody tr {
+      border: 1px solid #ccc;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    tbody tr:hover {
+      transform: scale(1.02);
+    }
+
+    /* Style the "View" button similar to "Choose File" button */
+    a.view-button {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    a.view-button::after {
+      content: 'View';
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    a.view-button::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #0277bd;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      z-index: 1;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    a.view-button:hover::before {
+      transform: scaleX(1);
+    }
+  </style>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Teacher</title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+  </head>
+
+<body>
+  <div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="<%process.cwd()%>/images/logo.png" alt="">
+            <span>
+              Teacher
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/dashboard/teacher">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/attendanceupload">Add Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/trviewattendance">View Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/uploadnote">Upload Note </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/assignassignment">Assign Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/viewassignment">View Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/addmark">Add Mark </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/trviewmark">View Mark </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31"
+                      alt="<%=user.Name%>">
+                    <div class="user-text">
+                      <h6>
+                        <%=user.Name%>
+                      </h6>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/auth/logout">Logout</a>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  </head>
+
+  <body>
+    <header>
+      <h1>View Assignments</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Uploaded Assignments</h2>
+        <br>
+        <form id="viewassignform">
+          <label for="subject">Select Subject:</label>
+          <select id="subject" name="subject" required>
+            <option value="" selected>Select a Subject</option>
+            <% for(item in user.Subjects) {%>
+              <option value="<%=user.Subjects[item]%>">
+                <%=user.Subjects[item]%>
+              </option>
+              <% } %>
+          </select>
+        </form>
+        <div class="display-info" id="assi-name">Assignment Topic: --</div>
+        <table id="table-assignment" style="display: none;">
+          <thead>
+            <tr>
+              <th>SNo</th>
+              <th>Student Name</th>
+              <th>View Assignment</th>
+            </tr>
+          </thead>
+          <tbody id="tablebody">
+            <!-- Sample data, replace with actual data -->
+            <tr>
+              <td>1</td>
+              <td>John Doe</td>
+              <td><a href="uploaded_assignment_1.pdf" target="_blank">View</a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jane Smith</td>
+              <td><a href="uploaded_assignment_2.pdf" target="_blank">View</a></td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <script>
+      document.getElementById('subject').onchange = (async (e) => {
+        const sub = e.target.value;
+        let displayInfoElement = document.getElementById('assi-name');
+        if (sub) {
+          await fetch('/api/student/getassignmenttopic', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: sub }) }).then(e => e.json()).then(data => {
+            if (data.status == 200) {
+              displayInfoElement.innerHTML = 'Assignment Topic: ' + data.topics.Assignment;
+              document.getElementById('table-assignment').style.display = 'block';
+              LoadAssignments(sub);
+            } else {
+              displayInfoElement.innerHTML = "No topics found";
+              document.getElementById('table-assignment').style.display = 'none';
+            }
+          })
+        }
+      })
+      async function LoadAssignments(subject) {
+        const tbody = document.getElementById('tablebody');
+        tbody.innerHTML = ''
+        await fetch('/api/teacher/listassignment?subject=' + subject, {
+          method: 'GET', headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(e => e.json()).then(data => {
+          if (data.status != 200) {
+            tbody.innerHTML = '<tr><td colspan="3">No students uploaded</td></tr>'
+          } else {
+            data = data.data;
+            for (let i = 0; i < data.length; i++) {
+              let row = `
+              <tr>
+                <td>${i + 1}</td>
+                <td>${data[i].Student}</td>
+                <td><a href="/cdn/assignment/${data[i].File}" target="_blank">View</a></td>
+              </tr>`;
+              tbody.innerHTML += row;
+            }
+          }
+        })
+      }
+    </script>
+  </body>
+
+</html>

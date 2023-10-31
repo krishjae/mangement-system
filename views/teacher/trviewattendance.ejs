@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Teacher</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+</head>
+<style>
+   .header {
+      background-color: #039be5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  
+ 
+    .container {
+      text-align: center;
+    }
+    table {
+      margin: 0 auto;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+   
+  
+</style>
+
+<body>
+  <div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="<%process.cwd()%>/images/logo.png" alt="">
+            <span>
+              Teacher
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/dashboard/teacher">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/attendanceupload">Add Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/trviewattendance">View Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/uploadnote">Upload Note </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/assignassignment">Assign Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/viewassignment">View Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/addmark">Add Mark </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/trviewmark">View Mark </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31"
+                      alt="<%=user.Name%>">
+                    <div class="user-text">
+                      <h6>
+                        <%=user.Name%>
+                      </h6>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/auth/logout">Logout</a>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+  <body>
+    <div class="header">
+    <h1>Attendance View</h1></div>
+    <div class="container">
+    <label for="MonthSelect">Select Month:</label>
+    <select id="Month">
+      <option value="">--Please choose an option--</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <!-- Add more options as needed -->
+    </select>
+    <label for="DepartmentSelect">Select DEPT:</label>
+    <select id="Department">
+      <option value="">--Please choose an option--</option>
+      <option value="BCA">BCA</option>
+      <option value="MCA">MCA</option>
+      <!-- Add more options as needed -->
+    </select>
+  
+    <table id="noteTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Semester</th>
+          <th>Total Present</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>NARU</td>
+          <td>BCA</td>
+          <td>Semester 1</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>ACHU</td>
+          <td>BCA</td>
+          <td>Semester 1</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>KRISHNAJITH</td>
+          <td>BCA</td>
+          <td>Semester 1</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>ROBIN</td>
+          <td>BCA</td>
+          <td>Semester 1</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>ALFU</td>
+          <td>BCA</td>
+          <td>Semester 1</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  
+    <script>
+      const Department = document.getElementById('Department');
+      const Month = document.getElementById('Month');
+      const Table = document.getElementById('noteTable');
+  
+      Department.addEventListener('change', () => {
+        if (Month.value === 'August' && Department.value === 'BCA') {
+          Table.style.display = "block";
+        } else {
+          Table.style.display = "none";
+        }
+      });
+  
+      Month.addEventListener('change', () => {
+        if (Month.value === 'August' && Department.value === 'BCA') {
+          Table.style.display = "block";
+        } else {
+          Table.style.display = "none";
+        }
+      });
+   
+ 
+      /*document.addEventListener('DOMContentLoaded', async () => {
+        const tableBody = document.getElementById('tableBody');
+        let response = await fetch('/api/teacher/attendance');
+        let data = await response.json();
+        data.forEach(item => {
+          const row = `<tr>
+            <td>${item.month}</td>
+            <td>${item.name}</td>
+            <td>${item.department}</td>
+            <td>${item.semester}</td>
+            <td>${item.totalpresent}</td>
+          </tr>`;
+          tableBody.innerHTML += row;
+        });
+      });*/
+    </script>
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Student</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+  <style>
+    /* Your CSS styles here */
+    /* Reset default margin and padding for all elements */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Apply a background color and some padding to the header */
+    header {
+      background-color: #039be5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Style the main content area */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Style form labels and input fields */
+    form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0277bd;
+    }
+
+    /* Style for displaying subject and assignment topic */
+    .display-info {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Style for the form section */
+    section {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    section:hover {
+      transform: scale(1.02);
+    }
+
+    /* Style for the "Choose File" input */
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Style for the "Choose File" button */
+    input[type="file"]::-webkit-file-upload-button {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Style for the "Choose File" button on Firefox */
+    input[type="file"]::-moz-file-upload-button {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Style for the "Choose File" button on Edge/IE */
+    input[type="file"]::-ms-browse {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="<%process.cwd()%>/images/logo.png" alt="">
+            <span>
+              Student
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/dashboard/student">Home <span class="sr-only">(current)</span></a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/viewattendance">View Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/viewnote">View Note </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/uploadassignment">Upload Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/viewmark">View Mark </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31" alt="<%=user.Name%>">
+                    <div class="user-text">
+                        <h6><%=user.Name%></h6>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/auth/logout">Logout</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+
+
+ 
+
+  <body>
+
+    <header>
+      <h1>Upload Assignment</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Upload Assignment</h2>
+        <br>
+        <!-- Display subject and assignment topic -->
+        <label for="subject">Select Subject:</label>
+        <select id="subject" name="subject" required>
+          <option value="" selected>Select a Subject</option>
+          <% for(item in Subjects) {%>
+            <option value="<%=Subjects[item]%>">
+              <%=Subjects[item]%>
+            </option>
+            <% } %>
+        </select>
+        <div class="display-info" id="assi-name">Assignment Topic: --</div>
+        <br>
+        <form id="assignmentform" enctype="multipart/form-data">
+          <label for="assignmentFile">Upload Assignment File:</label>
+          <input type="file" id="assignmentFile" disabled name="assignmentFile" accept=".pdf" required>
+          <br>
+          <input disabled id="submitbtn" type="submit" value="Upload">
+        </form>
+      </section>
+    </main>
+    <script>
+      let _AssignmentTopic = null;
+      document.getElementById('subject').onchange = (async (e) => {
+        const sub = e.target.value;
+        let displayInfoElement = document.getElementById('assi-name');
+        if (sub) {
+          await fetch('/api/student/getassignmenttopic', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: sub }) }).then(e => e.json()).then(data => {
+            if (data.status == 200) {
+              displayInfoElement.innerHTML = 'Assignment Topic: ' + data.topics.Assignment;
+              _AssignmentTopic = data.topics.Assignment;
+              document.getElementById('assignmentFile').removeAttribute('disabled');
+              document.getElementById('submitbtn').removeAttribute('disabled');
+            } else {
+              displayInfoElement.innerHTML = "No topics found";
+              document.getElementById('assignmentFile').disabled = 'disabled';
+              document.getElementById('submitbtn').disabled = 'disabled';
+            }
+          })
+        }
+      })
+      document.getElementById('assignmentform').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const file = document.getElementById('assignmentFile').files[0];
+        const sub = document.getElementById('subject').value;
+        const formdata = new FormData();
+        formdata.append("file", file);
+        formdata.append("topic", _AssignmentTopic);
+        formdata.append("subject", sub);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/student/uploadassignment', true);
+        xhr.onload = function () {
+            alert(JSON.parse(this.response).message);
+        };
+        xhr.send(formdata);
+      });
+    </script>
+  </body>
+
+</html>

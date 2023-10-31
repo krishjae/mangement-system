@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!DOCTYPE html>
+
+
+    <head>
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <title>Teacher</title>
+
+        <!-- slider stylesheet -->
+        <link rel="stylesheet" type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+        <!-- fonts style -->
+        <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap"
+            rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+        <!-- responsive style -->
+        <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+    </head>
+
+<body>
+    <div>
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="<%process.cwd()%>/images/logo.png" alt="">
+                        <span>
+                            Teacher
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+                          <ul class="navbar-nav  ">
+                            <li class="nav-item active">
+                              <a class="nav-link" href="/dashboard/teacher">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/attendanceupload">Add Attendance </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/trviewattendance">View Attendance </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/uploadnote">Upload Note </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/assignassignment">Assign Assignment </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/viewassignment">View Assignment </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/addmark">Add Mark </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard/teacher/trviewmark">View Mark </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31"
+                                  alt="<%=user.Name%>">
+                                <div class="user-text">
+                                  <h6>
+                                    <%=user.Name%>
+                                  </h6>
+                                </div>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/auth/logout">Logout</a>
+                              </div>
+                            </li>
+            
+                          </ul>
+                        </div>
+                      </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <body class="p-5">
+
+        <form id="attendance-form">
+            <select id="department" class="custom-select mb-3">
+                <option selected>Select Department</option>
+                <option value="BCA">BCA</option>
+                <option value="MSC">MSC</option>
+            </select>
+
+            <select id="semester" class="custom-select mb-3">
+                <option selected>Select Semester</option>
+                <option value="semester1">Semester 1</option>
+                <option value="semester2">Semester 2</option>
+            </select>
+
+            <select id="month" class="custom-select mb-3">
+                <option selected>Select Month</option>
+                <option value="semester1">August</option>
+                <option value="semester2">September</option>
+            </select>
+        </form>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <!-- Independent Status columns -->
+                    <th scope="col">Status 1</th>
+                    <th scope="col">Status 2</th>
+                    <th scope="col">Status 3</th>
+                    <th scope="col">Status 4</th>
+                    <th scope="col">Status 5</th>
+                    <th scope="col">Status 6</th>
+                    <th scope="col">Status 7</th>
+                    <th scope="col">Status 8</th>
+                    <th scope="col">Status 9</th>
+                    <th scope="col">Status 10</th>
+                    <!-- Total Present column -->
+                    <th scope="col">Total Present</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>NARU</td>
+                    <!-- Independent buttons for each Status column -->
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 1)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 1)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 2)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 2)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 3)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 3)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 4)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 4)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 5)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 5)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 6)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 6)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 7)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 7)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 8)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 8)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 9)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 9)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 10)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 10)">Absent</button>
+                    </td>
+                    <!-- Total Present cell -->
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>ACHU</td>
+                    <!-- Independent buttons for each Status column -->
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 1)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 1)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 2)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 2)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 3)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 3)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 4)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 4)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 5)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 5)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 6)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 6)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 7)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 7)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 8)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 8)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 9)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 9)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 10)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 10)">Absent</button>
+                    </td>
+                    <!-- Total Present cell -->
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>KRISHNAJITH</td>
+                    <!-- Independent buttons for each Status column -->
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 1)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 1)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 2)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 2)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 3)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 3)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 4)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 4)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 5)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 5)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 6)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 6)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 7)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 7)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 8)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 8)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 9)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 9)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 10)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 10)">Absent</button>
+                    </td>
+                    <!-- Total Present cell -->
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>ROBIN</td>
+                    <!-- Independent buttons for each Status column -->
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 1)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 1)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 2)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 2)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 3)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 3)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 4)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 4)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 5)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 5)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 6)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 6)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 7)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 7)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 8)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 8)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 9)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 9)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 10)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 10)">Absent</button>
+                    </td>
+                    <!-- Total Present cell -->
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>ALFU</td>
+                    <!-- Independent buttons for each Status column -->
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 1)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 1)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 2)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 2)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 3)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 3)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 4)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 4)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 5)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 5)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 6)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 6)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 7)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 7)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 8)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 8)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 9)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 9)">Absent</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" onclick="setStatus(this, 'Present', 10)">Present</button>
+                        <button class="btn btn-danger" onclick="setStatus(this, 'Absent', 10)">Absent</button>
+                    </td>
+                    <!-- Total Present cell -->
+                    <td>0</td>
+                </tr><!-- Add more rows as needed -->
+            </tbody>
+        </table>
+
+        <button class="btn btn-primary" onclick="saveAttendance()">Save Attendance</button>
+
+        <script>
+            function setStatus(element, status, column) {
+                var row = element.parentNode.parentNode;
+                var statusCell = row.cells[column + 1]; // Calculate the correct column index
+                statusCell.textContent = status;
+
+                if (status === 'Present') {
+                    element.classList.add('btn-success');
+                    element.classList.remove('btn-danger');
+                } else if (status === 'Absent') {
+                    element.classList.add('btn-danger');
+                    element.classList.remove('btn-success');
+                }
+
+                // Update the Total Present count for the row
+                updateTotalPresent(row);
+            }
+
+            function updateTotalPresent(row) {
+                var totalPresentCell = row.cells[12]; // Total Present cell
+                var totalPresent = 0;
+
+                // Loop through Status columns and count "Present"
+                for (var i = 2; i <= 11; i++) {
+                    var statusCell = row.cells[i];
+                    if (statusCell.textContent === 'Present') {
+                        totalPresent++;
+                    }
+                }
+
+                totalPresentCell.textContent = totalPresent;
+            }
+
+            function saveAttendance() {
+                // Retrieve the selected department, semester, and date
+                var department = document.getElementById("department").value;
+                var semester = document.getElementById("semester").value;
+                var attendanceDate = document.getElementById("attendance-date").value;
+
+                // Create an array to store attendance data
+                var attendanceData = [];
+
+                // Loop through rows to collect attendance data
+                var rows = document.querySelectorAll('tbody tr');
+                rows.forEach(function (row) {
+                    var id = row.cells[0].textContent;
+                    var name = row.cells[1].textContent;
+                    var status = [];
+                    for (var i = 2; i <= 11; i++) {
+                        status.push(row.cells[i].textContent);
+                    }
+                    var totalPresent = row.cells[12].textContent;
+
+                    attendanceData.push({
+                        id: id,
+                        name: name,
+                        status: status,
+                        totalPresent: totalPresent
+                    });
+                });
+                console.log('Attendance Data:');
+                console.log({
+                    department: department,
+                    semester: semester,
+                    date: Date,
+                    data: attendanceData
+                });
+                sendToServer(department, semester, attendanceDate, attendanceData)
+            }
+            // Send the attendance data to the server for storage
+            // You can use JavaScript fetch() or another method here
+            function sendToServer(department, semester, date, attendanceData) {
+                var xhr = new XMLHttpRequest();
+                var url = '/api/teacher/attendanceupload'; // Replace with your actual server endpoint
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                // Convert the attendance data to JSON
+                var requestData = {
+                    department: department,
+                    semester: semester,
+                    date: date,
+                    data: attendanceData
+                };
+
+                var requestDataJSON = JSON.stringify(requestData);
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        alert(response.message);
+                        alert('attendance saved.');
+                    } else {
+                        alert('Error: Unable to save attendance data.');
+                    }
+                };
+
+                xhr.send(requestDataJSON);
+            }
+
+
+        </script>
+    </body>
+
+</html>

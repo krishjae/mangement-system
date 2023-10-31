@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Teacher</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="<%process.cwd()%>/images/logo.png" alt="">
+            <span>
+              Teacher
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/dashboard/teacher">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/attendanceupload">Add Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/trviewattendance">View Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/uploadnote">Upload Note </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/assignassignment">Assign Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/viewassignment">View Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/addmark">Add Mark </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/teacher/trviewmark">View Mark </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31"
+                      alt="<%=user.Name%>">
+                    <div class="user-text">
+                      <h6>
+                        <%=user.Name%>
+                      </h6>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/auth/logout">Logout</a>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks</title>
+  <style>
+    /* Reset default margin and padding for all elements */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Apply a background color and some padding to the header */
+    header {
+      background-color: #039be5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Style the main content area */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Style form labels and input fields */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0277bd;
+    }
+  </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Student Marks</h1>
+    </header>
+
+    <main>
+      <form id="markform">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Student Name</th>
+              <th>Mark</th>
+            </tr>
+          </thead>
+          <tbody id="tablebody">
+            <% for(item in students){ %>
+              <tr>
+                <td>
+                  <%=parseInt(item)+1%>
+                </td>
+                <td>
+                  <%=students[item].Name%>
+                </td>
+                <td><input type="number" name="mark<%=parseInt(item)+1%>" title="Enter mark of <%=students[item].Name%>"
+                    required data-id="<%=students[item]._id%>"></td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+        <input type="submit" value="Submit">
+      </form>
+    </main>
+  </body>
+  <script>
+    document.getElementById('markform').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      var inputs = this.getElementsByTagName('input');
+      var values = {};
+
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].type == 'number') values[inputs[i].dataset.id] = inputs[i].value;
+      }
+      fetch('/api/teacher/addmark', {
+        method: 'POST', headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"mark":values})
+      }).then(e => e.json()).then(data => {
+        alert("Added Successfully");
+      })
+    });
+  </script>
+
+</html>

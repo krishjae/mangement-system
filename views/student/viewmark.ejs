@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Student</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+  <style>
+     .header {
+      background-color: #039be5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Style the table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="<%process.cwd()%>/images/logo.png" alt="">
+            <span>
+              Student
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/dashboard/student">Home <span class="sr-only">(current)</span></a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/viewattendance">View Attendance </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/viewnote">View Note </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/uploadassignment">Upload Assignment </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/student/viewmark">View Mark </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31" alt="<%=user.Name%>">
+                    <div class="user-text">
+                        <h6><%=user.Name%></h6>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/auth/logout">Logout</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+      <div class="header">
+      <h2>Student marks</h2></div>
+      <br><section>
+      <form id="viewassignform">
+        <label for="subject">Select Subject:</label>
+        <select id="subject" name="subject" required>
+          <option value="" selected>Select a Subject</option>
+          <% for(item in Subjects) {%>
+            <option value="<%=Subjects[item]%>">
+              <%=Subjects[item]%>
+            </option>
+            <% } %>
+        </select>
+      </form>
+      <table id="table-markview" style="display: none;">
+        <thead>
+          <tr>
+            <th>SNo</th>
+            <th>Subject</th>
+            <th>Mark</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+          <!-- Sample data, replace with actual data -->
+          <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>56</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <script>
+    document.getElementById('subject').onchange = CheckMark;
+
+    async function CheckMark() {
+      const sub = document.getElementById('subject').value;
+      const tbody = document.getElementById('tablebody');
+      if(sub){
+        await fetch('/api/student/viewmark', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: sub}) }).then(e => e.json()).then(data => {
+          if (data.status == 200) {
+            document.getElementById('table-markview').style.display = 'block';
+            tbody.innerHTML = "";
+            data = data.data;
+            for (let i = 0; i < data.length; i++) {
+              let row = `
+                <tr>
+                  <td>${i + 1}</td>
+                  <td>${data[i].Subject}</td>
+                  <td>${data[i].Marks}</td>
+                </tr>`;
+              tbody.innerHTML += row;
+            }
+          } else {
+            document.getElementById('table-markview').style.display = 'none';
+          }
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

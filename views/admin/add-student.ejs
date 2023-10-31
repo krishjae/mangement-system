@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Admin</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="<%process.cwd()%>/../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap"
+    rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="<%process.cwd()%>/../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="<%process.cwd()%>/../css/responsive.css" rel="stylesheet" />
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    select {
+      height: 40px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="<%process.cwd()%>/images/logo.png" alt="">
+            <span>
+              Admin
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/dashboard/admin/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/admin/add-teacher">Add teacher </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/admin/viewteacher">View teacher </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/admin/add-student">Add student </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/admin/viewstudent">View student </a>
+                </li>
+                <li class="nav-item dropdown has-arrow new-user-menus">
+                  <div class="dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                      <span class="user-img">
+                        <img class="rounded-circle" src="<%process.cwd()%>/images/default.jpg" width="31"
+                          alt="<%=user.FirstName%>">
+                        <div class="user-text">
+                          <h6>
+                            <%=user.FirstName%>
+                          </h6>
+                          <p class="text-muted mb-0">
+                            <%=user.Role%>
+                          </p>
+                        </div>
+                      </span>
+                    </a>
+                    <div class="dropdown-menu">
+                      <div class="user-header">
+                        <div class="avatar avatar-sm">
+                          <img src="<%process.cwd()%>/images/default.jpg" alt="User Image"
+                            class="avatar-img rounded-circle">
+                        </div>
+                        <div class="user-text">
+                          <h6>
+                            <%=user.FirstName%>
+                          </h6>
+                          <p class="text-muted mb-0">
+                            <%=user.Role%>
+                          </p>
+                        </div>
+                      </div>
+
+                      <a class="dropdown-item" href="/auth/logout">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+  <div>
+    <div class="container">
+      <h2>Add Student</h2>
+      <form id="addstudent">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required>
+
+        <label for="studentEmail">Student Email:</label>
+        <input type="email" id="studentEmail" name="studentEmail" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department">
+          <option value="BCA">BCA</option>
+          <option value="MSC">MSC</option>
+        </select>
+
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester">
+          <option value="Semester 1">Semester 1</option>
+          <option value="Semester 2">Semester 2</option>
+          <option value="Semester 3">Semester 3</option>
+          <option value="Semester 4">Semester 4</option>
+          <option value="Semester 5">Semester 5</option>
+          <option value="Semester 6">Semester 6</option>
+        </select>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+        <button type="submit">Add Student</button>
+      </form>
+    </div>
+  </div>
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2019 All Rights Reserved By
+      <a href="#">cnc College</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="<%process.cwd()%>/../js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="<%process.cwd()%>/../js/bootstrap.js"></script>
+  <script>
+    document.getElementById('addstudent').onsubmit = async (e) => {
+      e.preventDefault()
+      const studentName = document.getElementById('studentName');
+      const studentEmail = document.getElementById('studentEmail');
+      const password = document.getElementById('password');
+      const department = document.getElementById('department');
+      const phoneNumber = document.getElementById('phoneNumber');
+      const semester = document.getElementById('semester');
+      let __options = { method: 'POST', headers: { 'Content-Type': 'application/json;charset=utf-8' }, body: JSON.stringify({"Name":studentName.value, "Password":password.value, "Email":studentEmail.value, "Department":department.value, "PhoneNumber":phoneNumber.value, "Semester":semester.value}) };
+      await fetch('/api/admin/addstudent', __options).then(e => e.json()).then(data => {
+        alert(data.message);
+        e.target.reset();
+      })
+    }
+
+  </script>
+</body>
+
+
+
+</html>
